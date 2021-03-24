@@ -1,0 +1,39 @@
+To-Do List:
+1. recreate machine using SSD
+	a. Install linux (need to set boot to use non-UEFI aka classic?)
+	b. Do Initiial Ubuntu Server Setup
+	c. Install all necessary software (GUI, Plex, plex update script, SABNZBD, couchpotato (or radarr?), sonarr, filebot, notepadqq)
+		i. Configure Port Forwarding necessary (Plex, what else?)
+		ii. Configure connections in each software: Usenet download, 2 indexers, trakt connection
+	d. copy over scripts/create launchpad item on new image.
+	e. configure scripts/software to autolaunch
+	f. establish library naming/sorting conventions
+		i.   Will you use CP and Sonarr's postprocess naming/sorting?
+		ii.  Filebot sorting?
+		iii. Sabnzbd+ post process sorting?
+	g. mirror library to new drive
+
+2. configure script for renaming/sorting media post download using filebot
+3. Finalize sorting/renaming/moving process
+4. find out how to run this process ~once a day
+5. configure torrents
+6. configure kill switch for torrents when off VPN
+7. Virtualize?
+8. Look into creating VPN into my network
+
+List of info:
+SAB:
+	usenet downloader: news.newsdemon.com, port 563, username: cxb5gevpnt PW: 7i49v79w Connections: 25
+	Configure Folders (temp dwonload, complete download and watched)
+	consider indexer integration
+Sonarr:
+	Indexers: https://althub.co.za/	URL: https://api.althub.co.za API Path: /api API Key: 0fc58eb50cd306a7df8b546ff2115762 (yes RSS, yes search)
+			  https://nzbgeek.info/index.php  URL: https://api.nzbgeek.info API Path: /api API Key: 90492237101095  (yes RSS, yes search)
+	renaming: yes
+	download Client: SAB
+CouchPotato:
+	First Search - Usenet, Retention: 1500, Min Seeders - 1
+	Searcher: Newznab option - same as settings from Sonarr indexers
+	Downloaders: User For Usenet - Sabnnzbd
+
+Setup Radarr instead of CP

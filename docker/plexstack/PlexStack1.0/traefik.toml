@@ -1,0 +1,37 @@
+# This file lives in /data/config/traefik/traefik.toml
+# This gives Traefik it's configuration and will be replaced with a yaml file
+# when I switch to 2.X
+
+
+debug = true
+
+#logLevel = "ERROR"
+defaultEntryPoints = ["https","http"]
+
+[traefikLog]
+  filePath = "/log/traefik.log"
+  format = "json"
+
+[accessLog]
+  filePath = "/log/access.log"
+  format = "json"
+
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+  [entryPoints.https]
+  address = ":443"
+  [entryPoints.https.tls]
+
+[retry]
+
+[acme]
+email = "traefik@mtbred.com"
+storage = "acme.json"
+entryPoint = "https"
+OnHostRule = true
+[acme.httpChallenge]
+entryPoint = "http"

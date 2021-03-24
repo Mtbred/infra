@@ -1,0 +1,17 @@
+PlexStack VM information
+  - server IP 192.168.2.46
+  - MAC address that is set to static in router 22:90:66:bf:72:7c
+
+I have an nfs share mounted on the PlexStack box
+  - It is done by adding this line to the end of the /etc/fstab:
+  - 192.168.2.23:/mnt/Primary_Pool/Linux/data /data nfs default 0 0
+
+This configuration requires an acme.json file to be created at:
+  - /data/config/traefik/acme.json
+  - This file needs to be chmod to 600 before running docker-compose up -d
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+missing information for the configuration:
+  need to write out the configs for all the docker containers
+  because I may need to redo them following the migration to docker 2.X?
+  but it also will just be beneficial to have in general

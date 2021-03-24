@@ -1,0 +1,41 @@
+#copy docker script
+curl -fsSL https://get.docker.com -o get-docker.sh
+
+#install docker via script
+sudo sh get-docker.sh
+
+#give user mike permission to run docker
+sudo usermod -aG docker mike
+
+#logout, then reconnect to ssh session
+logout
+
+#confirm docker is installed correctly and then functions
+docker version
+docker run hello-world
+
+#configure docker to start on boot
+sudo systemctl enable docker.service
+sudo systemctl enable containerd.service
+
+#install docker-compose - This currently installs version 1.28.4 of compose, make sure you get the latest version from https://docs.docker.com/compose/install/
+sudo curl -L "https://github.com/docker/compose/releases/download/1.28.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
+#check docker-compose functionality
+docker-compose --version
+
+#if --version command fails run this
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+
+#install Portainer Agent
+docker run -d -p 9001:9001 --name portainer_agent --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/volumes:/var/lib/docker/volumes portainer/agent
+
+#then connect to the agent on primary dockerhost portainer by adding an endpoint with type portainer agent
+
+
+
+#change permissions on .docker folder?
+sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
+sudo chmod g+rwx "$HOME/.docker" -R
+
